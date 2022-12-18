@@ -4,22 +4,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.coffeerecipe.api.entity.Recipe;
-import com.coffeerecipe.api.service.RecipeService;
+import com.coffeerecipe.api.entity.MRecipe;
+import com.coffeerecipe.api.service.RecipesService;
 
 @RestController
 public class RecipesController 
 {
 		@Autowired
-	RecipeService recipeService;
+	RecipesService recipeService;
 
 	@GetMapping("/recipes")
-	public List<Recipe> greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+	public List<MRecipe> GetAllRecipes() {
 
-	    List<Recipe> userlist = recipeService.searchAll();
+	    List<MRecipe> userlist = recipeService.searchAll();
 	    return  userlist;
 	}
+
 }

@@ -1,9 +1,12 @@
 package com.coffeerecipe.api.entity;
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -12,32 +15,33 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name = "M_RECIPES")
-public class Recipe {
+@Table(name = "T_TIMER")
+public class TTimer {
     /**
      * ID
      */
     @Id
-    @Column(name = "RECIPE_KEY")
+    @Column(name = "TIMER_KEY")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer RECIPE_KEY;
+    private Integer TIMER_KEY;
     /**
-     * 名前
+     * レシピ主キー
      */
-    @Column(name = "RECIPE_NAME")
-    private String RECIPE_NAME;
+    @Column(name = "RECIPE_KEY")
+	@PrimaryKeyJoinColumn(name = "M_RECIPE",referencedColumnName="RECIPE_KEY")
+    private String BEANS_NAME;
     /**
-     * 住所
+     * タイマー時刻
      */
-    @Column(name = "DISP_ORDER")
-    private String DISP_ORDER;
+    @Column(name = "TIMER_DATE")
+    private Date TIMER_DATE;
     /**
-     * 電話番号
+     * アクティブフラグ
      */
     @Column(name = "ACTIVE_FLG")
     private Integer ACTIVE_FLG;
     /**
-     * 更新日時
+     * 削除フラグ
      */
     @Column(name = "DELETE_FLG")
     private Integer DELETE_FLG;
