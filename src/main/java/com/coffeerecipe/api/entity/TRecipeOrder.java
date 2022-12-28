@@ -1,12 +1,10 @@
 package com.coffeerecipe.api.entity;
-import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -15,26 +13,43 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name = "T_TIMER")
-public class TTimer {
+@Table(name = "T_RECIPE_ORDER")
+public class TRecipeOrder {
     /**
      * ID
      */
     @Id
-    @Column(name = "TIMER_KEY")
+    @Column(name = "RECIPE_ORDER_KEY")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer TIMER_KEY;
     /**
      * レシピ主キー
      */
     @Column(name = "RECIPE_KEY")
-	@PrimaryKeyJoinColumn(name = "M_RECIPE",referencedColumnName="RECIPE_KEY")
-    private String BEANS_NAME;
+    private Integer RECIPE_KEY;
+    /**
+     * 順番
+     */
+    @Column(name = "ORDER")
+    private Integer ORDER;
+    /**
+     * ドリップ比率
+     */
+    @Column(name = "ORDER_RATIO")
+    private Integer ORDER_RATIO;
+    
     /**
      * タイマー時刻
      */
-    @Column(name = "TIMER_DATE")
-    private Date TIMER_DATE;
+    @Column(name = "MINUTES_DATE")
+    private Integer MINUTES_DATE;
+    
+    /**
+     * タイマー時刻
+     */
+    @Column(name = "SECOND_DATE")
+    private Integer second_date;
+    
     /**
      * アクティブフラグ
      */
@@ -45,5 +60,8 @@ public class TTimer {
      */
     @Column(name = "DELETE_FLG")
     private Integer DELETE_FLG;
+    
+    @ManyToOne
+    private MRecipe recipe;
 
 }

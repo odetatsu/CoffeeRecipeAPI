@@ -17,6 +17,12 @@ public class RecipesService {
         return recipeRepository.findAll();
     }
     
+    
+    public MRecipe select(int recipeKey) {
+        // ユーザーTBLの内容を全検索
+        return recipeRepository.findById(recipeKey).get();
+    }
+    
     public void delete(int recipeKey) {
     	recipeRepository.deleteById(recipeKey);
     }

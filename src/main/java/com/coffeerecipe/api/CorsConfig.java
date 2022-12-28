@@ -1,7 +1,5 @@
 package com.coffeerecipe.api;
 
-import java.util.Arrays;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -14,12 +12,17 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("http://localhost:3000")); // アクセス許可するURL
+        
+        config.addAllowedOrigin("http://localhost:3000");
+        config.addAllowedOrigin("https://coffeerecipe-bc78a.web.app");
+        config.addAllowedOrigin("https://gu8oy6c562.execute-api.ap-northeast-1.amazonaws.com");
+
+        
         config.setAllowCredentials(true);
         config.addAllowedMethod("*");
         config.addAllowedHeader("*");
         config.addExposedHeader("Set-Cookie");
-
+        
         UrlBasedCorsConfigurationSource configSource = new UrlBasedCorsConfigurationSource();
         configSource.registerCorsConfiguration("/**", config);
 

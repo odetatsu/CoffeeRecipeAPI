@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -19,7 +18,6 @@ public class MTaste {
     /**
      * ID
      */
-    @Id
     @Column(name = "TASTE_KEY")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer TASTE_KEY;
@@ -27,7 +25,7 @@ public class MTaste {
      * ID
      */
     @Id
-	@PrimaryKeyJoinColumn(name = "RECIPE_KEY",referencedColumnName="RECIPE_KEY")
+    @Column(name = "RECIPE_KEY")
     private Integer RECIPE_KEY;    
     /**
      * 名前

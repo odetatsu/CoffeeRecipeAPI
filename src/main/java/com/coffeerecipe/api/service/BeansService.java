@@ -17,7 +17,7 @@ public class BeansService {
         return repository.findAll();
     }
     public void save(String name, String info,int roast) {
-    	
+    	repository.findAll();
     	var dto = new MBeans();
     	dto.setBEANS_NAME(name);
     	dto.setBEANS_INFO(info);

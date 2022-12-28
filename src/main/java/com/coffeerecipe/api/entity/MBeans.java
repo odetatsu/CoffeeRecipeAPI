@@ -1,9 +1,11 @@
 package com.coffeerecipe.api.entity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -52,5 +54,8 @@ public class MBeans {
      */
     @Column(name = "DELETE_FLG")
     private Integer DELETE_FLG;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    private RRecipeBeans recipeBeans;
 
 }
