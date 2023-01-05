@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -21,7 +20,7 @@ public class TRecipeOrder {
     @Id
     @Column(name = "RECIPE_ORDER_KEY")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer TIMER_KEY;
+    private Integer RECIPE_ORDER_KEY;
     /**
      * レシピ主キー
      */
@@ -48,7 +47,7 @@ public class TRecipeOrder {
      * タイマー時刻
      */
     @Column(name = "SECOND_DATE")
-    private Integer second_date;
+    private Integer SECOND_DATE;
     
     /**
      * アクティブフラグ
@@ -59,9 +58,11 @@ public class TRecipeOrder {
      * 削除フラグ
      */
     @Column(name = "DELETE_FLG")
-    private Integer DELETE_FLG;
+    private Integer DELETE_FLG;    
+    /**
+     * ドリップ温度
+     */
+    @Column(name = "TEMPERATURE")
+    private Integer TEMPERATURE;
     
-    @ManyToOne
-    private MRecipe recipe;
-
 }

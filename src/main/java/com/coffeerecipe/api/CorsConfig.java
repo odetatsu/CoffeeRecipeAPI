@@ -14,6 +14,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         
         config.addAllowedOrigin("http://localhost:3000");
+        config.addAllowedOrigin("http://192.168.0.171:3000");
         config.addAllowedOrigin("https://coffeerecipe-bc78a.web.app");
         config.addAllowedOrigin("https://gu8oy6c562.execute-api.ap-northeast-1.amazonaws.com");
 

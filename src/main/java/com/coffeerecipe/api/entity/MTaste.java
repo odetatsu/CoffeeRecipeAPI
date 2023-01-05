@@ -22,30 +22,29 @@ public class MTaste {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer TASTE_KEY;
     /**
-     * ID
+     * レシピキー（外部キー）
      */
     @Id
     @Column(name = "RECIPE_KEY")
     private Integer RECIPE_KEY;    
     /**
-     * 名前
+     * 酸味
      */
     @Column(name = "ACIDITY")
     @GeneratedValue()
     private Integer ACIDITY;
     /**
-     * 焙煎度
+     * 苦味
      */
     @Column(name = "BITTER")
     private Integer BITTER;
-
     /**
-     * 表示順
+     * コク
      */
     @Column(name = "RICH")
     private Integer RICH;
     /**
-     * アクティブフラグ
+     * 備考
      */
     @Column(name = "REMARKS")
     private String REMARKS;

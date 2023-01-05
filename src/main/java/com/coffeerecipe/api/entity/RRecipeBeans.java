@@ -2,9 +2,6 @@ package com.coffeerecipe.api.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -13,7 +10,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name = "R_Recipe_Beans")
+@Table(name = "R_RECIPE_BEANS")
 public class RRecipeBeans {
     /**
      * コーヒー豆主キー
@@ -25,15 +22,5 @@ public class RRecipeBeans {
      */
 	@Id
 	@Column(name = "RECIPE_KEY")
-    private Integer RECIPE_KEY;
-	
-	@OneToOne
-	@MapsId
-    @JoinColumn(name = "BEANS_KEY")
-    private MBeans beans;
-
-	@OneToOne
-	@MapsId
-    @JoinColumn(name = "RECIPE_KEY")
-    private MRecipe recipe;
+    private Integer RECIPE_KEY;	
 }

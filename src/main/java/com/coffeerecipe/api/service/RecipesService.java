@@ -1,6 +1,7 @@
 package com.coffeerecipe.api.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,9 @@ public class RecipesService {
     }
     
     
-    public MRecipe select(int recipeKey) {
+    public Optional<MRecipe> select(int recipeKey) {
         // ユーザーTBLの内容を全検索
-        return recipeRepository.findById(recipeKey).get();
+        return recipeRepository.findById(recipeKey);
     }
     
     public void delete(int recipeKey) {

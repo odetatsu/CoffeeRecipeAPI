@@ -1,11 +1,9 @@
 package com.coffeerecipe.api.entity;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -29,7 +27,7 @@ public class MBeans {
     @Column(name = "BEANS_NAME")
     private String BEANS_NAME;
     /**
-     * 焙煎度
+     * コーヒ豆情報
      */
     @Column(name = "BEANS_INFO")
     private String BEANS_INFO;
@@ -43,7 +41,7 @@ public class MBeans {
      * 表示順
      */
     @Column(name = "DISP_ORDER")
-    private String DISP_ORDER;
+    private Integer DISP_ORDER;
     /**
      * アクティブフラグ
      */
@@ -54,8 +52,4 @@ public class MBeans {
      */
     @Column(name = "DELETE_FLG")
     private Integer DELETE_FLG;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    private RRecipeBeans recipeBeans;
-
 }
