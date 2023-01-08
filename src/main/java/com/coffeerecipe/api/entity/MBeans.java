@@ -1,4 +1,7 @@
 package com.coffeerecipe.api.entity;
+
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -52,4 +55,14 @@ public class MBeans {
      */
     @Column(name = "DELETE_FLG")
     private Integer DELETE_FLG;
+    /**
+     * 作成日時
+     */
+    @Column(name = "CREATE_DATE")
+    private Date CREATE_DATE;   
+    /**
+     * 更新日時
+     */
+    @Column(name = "UPDATE_DATE")
+    private Date UPDATE_DATE; 
 }

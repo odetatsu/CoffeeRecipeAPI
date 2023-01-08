@@ -1,4 +1,7 @@
 package com.coffeerecipe.api.entity;
+
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,13 +31,17 @@ public class MRecipe {
      * 名前
      */
     @Column(name = "RECIPE_NAME")
-    @GeneratedValue()
     private String RECIPE_NAME;
     /**
      * 焙煎度
      */
     @Column(name = "RECIPE_INFO")
     private String RECIPE_INFO;
+    /**
+     * ドリップ比率（100mlあたりの珈琲量）
+     */
+    @Column(name = "DRIP_RATIO")
+    private Double DRIP_RATIO;
     /**
      * 表示順
      */
@@ -50,6 +57,16 @@ public class MRecipe {
      */
     @Column(name = "DELETE_FLG")
     private Integer DELETE_FLG;
+    /**
+     * 作成日時
+     */
+    @Column(name = "CREATE_DATE")
+    private Date CREATE_DATE;   
+    /**
+     * 更新日時
+     */
+    @Column(name = "UPDATE_DATE")
+    private Date UPDATE_DATE; 
     
     @JoinTable(
             name = "R_Recipe_Beans",

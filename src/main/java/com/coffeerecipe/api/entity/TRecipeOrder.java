@@ -63,6 +63,11 @@ public class TRecipeOrder {
      * ドリップ温度
      */
     @Column(name = "TEMPERATURE")
-    private Integer TEMPERATURE;
+    private Integer TEMPERATURE;    
+    /**
+     * コメント
+     */
+    @Column(name = "COMMENT")
+    private Integer COMMENT;
     
 }
