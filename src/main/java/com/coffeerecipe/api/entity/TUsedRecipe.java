@@ -20,18 +20,18 @@ public class TUsedRecipe {
      * ID
      */
     @Id
-    @Column(name = "used_recipe_key")
+    @Column(name = "USED_RECIPE_KEY")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer RECIPE_ORDER_KEY;
+    private Integer USED_RECIPE_KEY;
     /**
      * レシピ主キー
      */
-    @Column(name = "recipe_key")
+    @Column(name = "RECIPE_KEY")
     private Integer RECIPE_KEY;
     /**
      * 更新日時
      */
-    @Column(name = "used_date")
+    @Column(name = "USED_DATE")
     private Date USED_DATE; 
     
 }

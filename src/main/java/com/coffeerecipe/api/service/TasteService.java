@@ -27,4 +27,16 @@ public class TasteService {
     public void delete(int recipeKey) {
     	repository.deleteById(recipeKey);
     }
+    
+    public void save(int recipeKey, int bitter, int acidity, int rich, String remarks) 
+    {
+    	var item = new MTaste();
+    	item.setRECIPE_KEY(recipeKey);
+    	item.setBITTER(bitter);
+    	item.setACIDITY(acidity);
+    	item.setRICH(rich);
+    	item.setREMARKS(remarks);
+
+    	repository.save(item);
+    }
 }

@@ -15,7 +15,7 @@ public class RecipeDetailInfoRes
 	Integer bitter;
 	Integer rich;
 	String remarks;
-	Double dripRatio;
+	Integer dripRatio;
 	Integer temperature;
 
 	
@@ -79,10 +79,10 @@ public class RecipeDetailInfoRes
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	public Double getDripRatio() {
+	public Integer getDripRatio() {
 		return dripRatio;
 	}
-	public void setDripRatio(Double dripRatio) {
+	public void setDripRatio(Integer dripRatio) {
 		this.dripRatio = dripRatio;
 	}
 	public Integer getTemperature() {

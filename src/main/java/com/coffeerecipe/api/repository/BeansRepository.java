@@ -9,6 +9,6 @@ import com.coffeerecipe.api.entity.MBeans;
  */
 @Repository
 public interface BeansRepository extends JpaRepository<MBeans, Integer> {
-    @Query(value ="select MAX(mb.DISP_ORDER) from m_beans mb", nativeQuery=true)
+    @Query(value ="select MAX(mb.DISP_ORDER) from m_beans mb;", nativeQuery=true)
 	Integer getMaxOrder();
 }

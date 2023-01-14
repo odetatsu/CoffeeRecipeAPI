@@ -5,18 +5,23 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coffeerecipe.api.converter.ResuponsConverter;
 import com.coffeerecipe.api.entity.MRecipe;
 import com.coffeerecipe.api.entity.MTaste;
-import com.coffeerecipe.api.entity.TRecipeOrder;
+import com.coffeerecipe.api.entity.TRecipeStep;
+import com.coffeerecipe.api.request.PostRecipeReq;
 import com.coffeerecipe.api.resupons.RecipeDetailInfoRes;
 import com.coffeerecipe.api.resupons.RecipeInfoRes;
 import com.coffeerecipe.api.resupons.RecipeStepRes;
-import com.coffeerecipe.api.service.RecipeOrderService;
+import com.coffeerecipe.api.service.RecipeStepService;
 import com.coffeerecipe.api.service.RecipesService;
 import com.coffeerecipe.api.service.TasteService;
 
@@ -30,7 +35,7 @@ public class RecipesController
 	TasteService tasteService;
 	
 	@Autowired
-	RecipeOrderService recipeOrderService;
+	RecipeStepService recipeStepService;
 	
 	@GetMapping("/recipes")
 	public List<RecipeInfoRes> GetAllRecipes() {
@@ -58,9 +63,30 @@ public class RecipesController
 	@GetMapping("/recipestep/{id}")
 	public List<RecipeStepRes> GetRecipeDetail(@PathVariable("id") Integer id) {
 
-		List<TRecipeOrder> recipeOrders = recipeOrderService.select(id);
-	    return  ResuponsConverter.Convert(recipeOrders);
+		List<TRecipeStep> recipeSteps = recipeStepService.select(id);
+	    return  ResuponsConverter.Convert(recipeSteps);
 	    
 	}
+	
+	@DeleteMapping("/recipes/{id}")
+	public void DeleteRecipes(@PathVariable("id") Integer id) {
 
+		recipeService.delete(id);
+	    
+	}
+	
+	
+	@PostMapping("/recipestep")
+	public void PostRecipeSteps(@RequestBody PostRecipeReq req) {
+
+		var recipeKey = recipeService.save(req.getRecipeInfo());
+		recipeStepService.save(req.getStepInfos(),recipeKey);
+	}
+	
+	@PutMapping("/recipestep")
+	public void PutRecipeSteps(@RequestBody PostRecipeReq req) {
+
+		recipeService.update(req.getRecipeInfo(),req.getRecipeKey());
+		recipeStepService.update(req.getStepInfos(),req.getRecipeKey());
+	}
 }

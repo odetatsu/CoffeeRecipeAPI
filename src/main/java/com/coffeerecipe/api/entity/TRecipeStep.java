@@ -12,15 +12,15 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name = "T_RECIPE_ORDER")
-public class TRecipeOrder {
+@Table(name = "T_RECIPE_STEP")
+public class TRecipeStep {
     /**
      * ID
      */
     @Id
-    @Column(name = "RECIPE_ORDER_KEY")
+    @Column(name = "RECIPE_STEP_KEY")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer RECIPE_ORDER_KEY;
+    private Integer RECIPE_STEP_KEY;
     /**
      * レシピ主キー
      */
@@ -29,13 +29,13 @@ public class TRecipeOrder {
     /**
      * 順番
      */
-    @Column(name = "ORDER")
-    private Integer ORDER;
+    @Column(name = "STEP")
+    private Integer STEP;
     /**
      * ドリップ比率
      */
-    @Column(name = "ORDER_RATIO")
-    private Integer ORDER_RATIO;
+    @Column(name = "DRIP_RATIO")
+    private Integer DRIP_RATIO;
     
     /**
      * タイマー時刻
@@ -47,18 +47,7 @@ public class TRecipeOrder {
      * タイマー時刻
      */
     @Column(name = "SECOND_DATE")
-    private Integer SECOND_DATE;
-    
-    /**
-     * アクティブフラグ
-     */
-    @Column(name = "ACTIVE_FLG")
-    private Integer ACTIVE_FLG;
-    /**
-     * 削除フラグ
-     */
-    @Column(name = "DELETE_FLG")
-    private Integer DELETE_FLG;    
+    private Integer SECOND_DATE;    
     /**
      * ドリップ温度
      */
@@ -68,6 +57,6 @@ public class TRecipeOrder {
      * コメント
      */
     @Column(name = "COMMENT")
-    private Integer COMMENT;
+    private String COMMENT;
     
 }

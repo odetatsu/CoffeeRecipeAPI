@@ -41,7 +41,7 @@ public class MRecipe {
      * ドリップ比率（100mlあたりの珈琲量）
      */
     @Column(name = "DRIP_RATIO")
-    private Double DRIP_RATIO;
+    private Integer DRIP_RATIO;
     /**
      * 表示順
      */
@@ -81,5 +81,20 @@ public class MRecipe {
     )
     @OneToOne
     private MBeans mBeans;
+    
+    @JoinTable(
+            name = "R_RECIPE_GEAR",
+            joinColumns = @JoinColumn(
+                    name = "RECIPE_KEY",
+                    referencedColumnName = "RECIPE_KEY"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "GEAR_KEY",
+                    referencedColumnName = "GEAR_KEY"
+            )
+    )
+    @OneToOne
+    private MGear mGeart;
+    
     
 }

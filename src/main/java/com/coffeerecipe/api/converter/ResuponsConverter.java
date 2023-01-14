@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.coffeerecipe.api.entity.MBeans;
+import com.coffeerecipe.api.entity.MGear;
 import com.coffeerecipe.api.entity.MRecipe;
 import com.coffeerecipe.api.entity.MTaste;
-import com.coffeerecipe.api.entity.TRecipeOrder;
+import com.coffeerecipe.api.entity.TRecipeStep;
+import com.coffeerecipe.api.entity.TUsedRecipe;
 import com.coffeerecipe.api.resupons.BeansInfoRes;
+import com.coffeerecipe.api.resupons.GearInfoRes;
 import com.coffeerecipe.api.resupons.ModBeansInfoRes;
 import com.coffeerecipe.api.resupons.RecipeDetailInfoRes;
 import com.coffeerecipe.api.resupons.RecipeInfoRes;
 import com.coffeerecipe.api.resupons.RecipeStepRes;
+import com.coffeerecipe.api.resupons.UsedRecipeRes;
 
 public class ResuponsConverter 
 {
@@ -24,6 +28,28 @@ public class ResuponsConverter
 		res.setBeansName(mBeans.getBEANS_NAME());
 		res.setRoastVal(mBeans.getROAST_VAL());
 		res.setDispOrder(mBeans.getDISP_ORDER());
+		
+		return res;
+	}
+	
+	public static UsedRecipeRes Convert(TUsedRecipe dto,  List<MRecipe> allRecipe) 
+	{
+		UsedRecipeRes res =new UsedRecipeRes();
+		var recipe = allRecipe.stream().filter(str->str.getRECIPE_KEY() == dto.getRECIPE_KEY()).findFirst().get();
+		res.setName(recipe.getRECIPE_NAME());
+
+		res.setKey(dto.getUSED_RECIPE_KEY());
+		res.setDate(dto.getUSED_DATE().toString());
+		
+		return res;
+	}
+	
+	public static GearInfoRes Convert(MGear mGear) 
+	{
+		var res =new GearInfoRes();
+		res.setKey(mGear.getGEAR_KEY());
+		res.setName(mGear.getGEAR_NAME());
+		res.setInfo(mGear.getGEAR_INFO());
 		
 		return res;
 	}
@@ -80,17 +106,17 @@ public class ResuponsConverter
 		return res;
 	}
 	
-	public static List<RecipeStepRes> Convert(List<TRecipeOrder> tRecipeOrders) 
+	public static List<RecipeStepRes> Convert(List<TRecipeStep> tRecipeSteps) 
 	{
 		List<RecipeStepRes> resList = new ArrayList<RecipeStepRes>();
-		tRecipeOrders.forEach(tRecipeOrder -> 
+		tRecipeSteps.forEach(tRecipeStep -> 
 		{
 			RecipeStepRes res =new RecipeStepRes();
-			res.setOrder(tRecipeOrder.getORDER());
-			res.setOrderRatio(tRecipeOrder.getORDER_RATIO());
-		    res.setMinutesDate(tRecipeOrder.getMINUTES_DATE());
-		    res.setSecondDate(tRecipeOrder.getSECOND_DATE());
-		    res.setTemperature(tRecipeOrder.getTEMPERATURE());
+			res.setOrder(tRecipeStep.getSTEP());
+			res.setOrderRatio(tRecipeStep.getDRIP_RATIO());
+		    res.setMinutesDate(tRecipeStep.getMINUTES_DATE());
+		    res.setSecondDate(tRecipeStep.getSECOND_DATE());
+		    res.setTemperature(tRecipeStep.getTEMPERATURE());
 		    resList.add(res);
 			}
 		);

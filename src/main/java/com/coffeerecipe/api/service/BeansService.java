@@ -53,5 +53,6 @@ public class BeansService {
     	dto.setDELETE_FLG(1);
     	Date date = new Date();
     	dto.setUPDATE_DATE(date);
-    	repository.save(dto);    }
+    	repository.save(dto);  
+    	}
 }
