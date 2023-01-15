@@ -12,6 +12,7 @@ import com.coffeerecipe.api.entity.TUsedRecipe;
 import com.coffeerecipe.api.resupons.BeansInfoRes;
 import com.coffeerecipe.api.resupons.GearInfoRes;
 import com.coffeerecipe.api.resupons.ModBeansInfoRes;
+import com.coffeerecipe.api.resupons.RecipeDetailAllRes;
 import com.coffeerecipe.api.resupons.RecipeDetailInfoRes;
 import com.coffeerecipe.api.resupons.RecipeInfoRes;
 import com.coffeerecipe.api.resupons.RecipeStepRes;
@@ -90,8 +91,14 @@ public class ResuponsConverter
 		res.setDripRatio(mRecipe.getDRIP_RATIO());
 		if(mRecipe.getMBeans()!=null) 
 		{
+			res.setBeansKey(mRecipe.getMBeans().getBEANS_KEY());
 			res.setBeansName(mRecipe.getMBeans().getBEANS_NAME());
 			res.setRoastVal(mRecipe.getMBeans().getROAST_VAL());
+		}
+		if(mRecipe.getMGeart()!=null) 
+		{
+			res.setGearKey(mRecipe.getMGeart().getGEAR_KEY());
+			res.setGearName(mRecipe.getMGeart().getGEAR_NAME());
 		}
 		if(mTaste != null) 
 		{
@@ -121,9 +128,15 @@ public class ResuponsConverter
 			}
 		);
 		
-		
-
-
 		return resList;
+	}
+	
+	public static RecipeDetailAllRes Convert(MRecipe mRecipe, MTaste mTaste, List<TRecipeStep> tRecipeSteps) 
+	{
+		RecipeDetailAllRes res =new RecipeDetailAllRes();
+		res.setRecipeInfo(Convert(mRecipe,mTaste));
+		res.setRecipeSteps(Convert(tRecipeSteps));
+
+		return res;
 	}
 }

@@ -50,8 +50,8 @@ public class RecipeStepService {
     
     public void update(List<StepInfosReq> stepInfos,int recipeKey)
     {
-    	repository.deleteByRecipeKey(recipeKey);
-    	
+    	var oldItems= repository.findByRecipeKey(recipeKey);
+    	repository.deleteAll(oldItems);    	
     	
     	var itemList = new ArrayList<TRecipeStep>();
     	stepInfos.forEach((item)->{

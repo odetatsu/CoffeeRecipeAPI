@@ -5,19 +5,15 @@ package com.coffeerecipe.api.request;
  */
 public class RecipeInfoReq
 {
-	Integer beansKey;
+	Integer materialKey;
+	Integer gearKey;
 	String name;
 	String info;
 	Integer acidity;
 	Integer bitter;
 	Integer rich;
 	Integer dripRatio;
-	public Integer getBeansKey() {
-		return beansKey;
-	}
-	public void setBeansKey(Integer beansKey) {
-		this.beansKey = beansKey;
-	}
+
 	public String getName() {
 		return name;
 	}
@@ -53,6 +49,18 @@ public class RecipeInfoReq
 	}
 	public void setDripRatio(Integer dripRatio) {
 		this.dripRatio = dripRatio;
+	}
+	public Integer getGearKey() {
+		return gearKey;
+	}
+	public void setGearKey(Integer gearKey) {
+		this.gearKey = gearKey;
+	}
+	public Integer getMaterialKey() {
+		return materialKey;
+	}
+	public void setMaterialKey(Integer materialKey) {
+		this.materialKey = materialKey;
 	}
 	
 }

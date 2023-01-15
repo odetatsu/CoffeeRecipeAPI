@@ -8,7 +8,10 @@ public class RecipeDetailInfoRes
     Integer recipeKey;
 	String recipeName;
 	String recipeInfo;
+	Integer beansKey;
 	String beansName;
+	Integer gearKey;
+	String gearName;
 	Integer roastVal;
 	Integer dispOrder;
 	Integer acidity;
@@ -90,5 +93,23 @@ public class RecipeDetailInfoRes
 	}
 	public void setTemperature(Integer temperature) {
 		this.temperature = temperature;
+	}
+	public Integer getBeansKey() {
+		return beansKey;
+	}
+	public void setBeansKey(Integer beansKey) {
+		this.beansKey = beansKey;
+	}
+	public Integer getGearKey() {
+		return gearKey;
+	}
+	public void setGearKey(Integer gearKey) {
+		this.gearKey = gearKey;
+	}
+	public String getGearName() {
+		return gearName;
+	}
+	public void setGearName(String gearName) {
+		this.gearName = gearName;
 	}
 }

@@ -15,6 +15,6 @@ public interface RecipeStepRepository extends JpaRepository<TRecipeStep, Integer
     @Query(value ="select * from t_recipe_step mt where mt.RECIPE_KEY = :recipeKey order by mt.STEP, mt.recipe_step_Key", nativeQuery=true)
 	List<TRecipeStep> findByRecipeKey(@Param("recipeKey") Integer recipeKey);
     @Query(value ="delete from t_recipe_step mt where mt.RECIPE_KEY = :recipeKey", nativeQuery=true)
-	List<TRecipeStep> deleteByRecipeKey(@Param("recipeKey") Integer recipeKey);
+	void deleteByRecipeKey(@Param("recipeKey") Integer recipeKey);
 }
 

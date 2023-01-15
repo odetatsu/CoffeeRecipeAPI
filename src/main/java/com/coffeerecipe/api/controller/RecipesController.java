@@ -18,6 +18,7 @@ import com.coffeerecipe.api.entity.MRecipe;
 import com.coffeerecipe.api.entity.MTaste;
 import com.coffeerecipe.api.entity.TRecipeStep;
 import com.coffeerecipe.api.request.PostRecipeReq;
+import com.coffeerecipe.api.resupons.RecipeDetailAllRes;
 import com.coffeerecipe.api.resupons.RecipeDetailInfoRes;
 import com.coffeerecipe.api.resupons.RecipeInfoRes;
 import com.coffeerecipe.api.resupons.RecipeStepRes;
@@ -66,6 +67,16 @@ public class RecipesController
 		List<TRecipeStep> recipeSteps = recipeStepService.select(id);
 	    return  ResuponsConverter.Convert(recipeSteps);
 	    
+	}
+	
+	@GetMapping("/recipe/{id}/all")
+	public RecipeDetailAllRes GetRecipeDetailAll(@PathVariable("id") Integer id) {
+
+
+		Optional<MRecipe>  recipe = recipeService.select(id);
+	    List<MTaste> taste = tasteService.select(id); 
+		List<TRecipeStep> recipeSteps = recipeStepService.select(id);
+	    return  ResuponsConverter.Convert(recipe.get(), taste.get(0), recipeSteps);
 	}
 	
 	@DeleteMapping("/recipes/{id}")

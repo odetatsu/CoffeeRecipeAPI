@@ -25,7 +25,16 @@ public class GearService {
     }
     
     public void delete(Integer id) {
-    	repository.deleteById(id);
+    	
+    	var dto = repository.findById(id).get();
+       
+    	dto.setACTIVE_FLG(0);
+    	dto.setDELETE_FLG(1);
+    
+    	var date = new Date();
+    	dto.setUPDATE_DATE(date);
+
+    	repository.save(dto);
     }
     
     public void save(String name, String info) 
