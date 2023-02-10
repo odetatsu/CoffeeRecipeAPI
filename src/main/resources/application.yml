@@ -10,4 +10,15 @@ spring:
 # サーバー設定
 server:
     port: 5000
+cloud:
+  aws:
+    credentials:
+      access-key: AKIA3OEVDCIH4IWBCWPU
+      secretKey: 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
+    stack.auto: false
+    region.auto: false
+    region.static: ap-northeast-1
+
+
+
     

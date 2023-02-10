@@ -65,4 +65,10 @@ public class MBeans {
      */
     @Column(name = "UPDATE_DATE")
     private Date UPDATE_DATE; 
+    
+    /**
+     * 無効フラグ
+     */
+    @Column(name = "INVALID_FLG")
+    private Integer INVALID_FLG;
 }
